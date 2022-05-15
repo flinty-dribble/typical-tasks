@@ -2,30 +2,17 @@ import { adder } from "./adder";
 
 describe("adder", () => {
   it("work check", () => {
-    if (typeof window !== "undefined") {
-      jest.spyOn(window, "alert");
+    expect(+adder()).toBe(0);
 
-      adder();
-      expect(window.alert).toHaveBeenCalledWith(0);
+    let s = adder();
 
-      const s = adder();
+    expect(+s(1)).toBe(1);
+    expect(+s(1)(2)).toBe(4);
+    expect(+s(2)(3)(5)).toBe(14);
 
-      s(1);
-      expect(window.alert).toHaveBeenCalledWith(1);
+    const s3 = adder(2);
 
-      s(1)(2);
-      expect(window.alert).toHaveBeenCalledWith(3);
-
-      s(2)(3)(5);
-      expect(window.alert).toHaveBeenCalledWith(10);
-
-      const s3 = adder(2);
-
-      s3(5);
-      expect(window.alert).toHaveBeenCalledWith(7);
-
-      s3(5)(2);
-      expect(window.alert).toHaveBeenCalledWith(9);
-    }
+    expect(+s3(5)).toBe(7);
+    expect(+s3(5)(2)).toBe(14);
   });
 });
