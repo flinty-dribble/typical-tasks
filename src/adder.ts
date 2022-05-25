@@ -7,9 +7,7 @@ export function adder(...args: number[]) {
     return f;
   }
 
-  f.toString = () => {
-    return sum;
-  };
+  f.toString = () => sum;
 
   return f;
 }

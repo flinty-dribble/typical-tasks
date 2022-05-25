@@ -4,7 +4,7 @@ describe("adder", () => {
   it("work check", () => {
     expect(+adder()).toBe(0);
 
-    let s = adder();
+    const s = adder();
 
     expect(+s(1)).toBe(1);
     expect(+s(1)(2)).toBe(4);

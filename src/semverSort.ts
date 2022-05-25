@@ -1,23 +1,31 @@
-export function semverSort(arr: any[]) {
+export function semverSort(arr: string[]) {
+  const res = arr;
+  const arrOfStrings = [];
+  let arrOfNumbers = [];
+  const result = [];
+  
   for (let i = 0; i < arr.length; i += 1) {
-    arr[i] = arr[i].split(".") as string;
+    arrOfStrings.push(res[i].split("."));
+    const version = [];
+    
+    for (let x = 0; x < arrOfStrings[i].length; x += 1) {
+      version.push(+arrOfStrings[i][x] + 100000);
+    }
 
-    for (let x = 0; x < arr[i].length; x += 1) {
-      arr[i][x] = +arr[i][x] as number;
-      arr[i][x] = arr[i][x] + 100000;
+    arrOfNumbers.push(version);
+  }
+
+  arrOfNumbers = arrOfNumbers.sort();
+
+  for (let i = 0; i < arr.length; i += 1) {
+    for (let x = 0; x < arrOfNumbers[i].length; x += 1) {
+      arrOfNumbers[i][x] -= 100000;
     }
   }
 
-  arr = arr.sort();
-
   for (let i = 0; i < arr.length; i += 1) {
-    for (let x = 0; x < arr[i].length; x += 1) {
-      arr[i][x] = (arr[i][x] - 100000) as number;
-    }
+    result.push(arrOfNumbers[i].join("."));
   }
-
-  for (let i = 0; i < arr.length; i += 1) {
-    arr[i] = arr[i].join(".") as number;
-  }
-  return arr;
+  
+  return result;
 }

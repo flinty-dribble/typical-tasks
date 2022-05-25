@@ -1,5 +1,5 @@
 export function spiral(arr: number[][]) {
-  let result = [];
+  const result = [];
   let startRow = 0;
   let startCol = 0;
   let endRow = arr[0].length - 1;
