@@ -3,11 +3,11 @@ export function semverSort(arr: string[]) {
   const arrOfStrings = [];
   let arrOfNumbers = [];
   const result = [];
-  
+
   for (let i = 0; i < arr.length; i += 1) {
     arrOfStrings.push(res[i].split("."));
     const version = [];
-    
+
     for (let x = 0; x < arrOfStrings[i].length; x += 1) {
       version.push(+arrOfStrings[i][x] + 100000);
     }
@@ -26,6 +26,6 @@ export function semverSort(arr: string[]) {
   for (let i = 0; i < arr.length; i += 1) {
     result.push(arrOfNumbers[i].join("."));
   }
-  
+
   return result;
 }
